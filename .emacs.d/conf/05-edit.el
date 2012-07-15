@@ -1,5 +1,5 @@
-;; highlit unnecessary space|tab (jaspace)
-;; http://homepage3.nifty.com/satomii/software/jaspace.el
+;;;; highlit unnecessary space|tab (jaspace)
+;;;; http://homepage3.nifty.com/satomii/software/jaspace.el
 (when (require 'jaspace nil t)
   (when (boundp 'jaspace-modes)
     (setq jaspace-modes (append jaspace-modes

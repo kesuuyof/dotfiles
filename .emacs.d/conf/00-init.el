@@ -1,6 +1,3 @@
-;; window size
-(setq initial-frame-alist '((width . 50) (height . 38) (top . 0) (left . 150)))
-
 ;; no sound
 (setq visible-bell t)
 
@@ -16,9 +13,12 @@
 ;; row number
 (line-number-mode t)
 
+;; column number
+(column-number-mode t)
+
 ;; color
 (add-to-list 'default-frame-alist '(foreground-color . "cyan"))
-(add-to-list 'default-frame-alist '(background-color . "black"))
+;;(add-to-list 'default-frame-alist '(background-color . "black"))
 (add-to-list 'default-frame-alist '(cursor-color . "SlateBlue2"))
 (add-to-list 'default-frame-alist '(mouse-color . "SlateBlue2"))
 (set-face-foreground 'modeline "black")
@@ -30,11 +30,26 @@
 ;; backup directory
 (setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
 
-;; font
-(set-face-attribute 'default nil :family "Ricty" :height 200)
-(set-fontset-font "fontset-default" 'japanese-jisx0208 ' ( "Ricty" . "iso10646-*"))
-
 ;; Interactively Do Things (highly recommended, but not strictly required)
 ;; http://www.emacswiki.org/cgi-bin/wiki/InteractivelyDoThings
 (require 'ido)
 (ido-mode t)
+
+
+;; use older version of Emacs23
+;; add derectory define
+(when (> emacs-major-version 23)
+  (defvar user-emacs-directory "~/.emacs.d"))
+
+;; define add-to-load-path function
+(defun add-to-load-path (&rest paths)
+  (let (path)
+    (dolist (path paths paths)
+      (let ((default-directory
+              (expand-file-name (concat user-emacs-directory path))))
+        (add-to-list 'load-path default-directory)
+        (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+            (normal-top-level-add-subdirs-to-load-path))))))
+
+;; add to load path
+(add-to-load-path "elisp" "conf" "public_repos")

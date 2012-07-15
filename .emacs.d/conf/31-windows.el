@@ -7,4 +7,6 @@
                     'japanese-jisx0208
                     '("Ricty Regular" . "jisx0208-sjis"))
   (add-to-list 'face-font-rescale-alist
-               `(,(encode-coding-string ".*Ricty Regular.*" 'emacs-mule) . 1.4)))
+               `(,(encode-coding-string ".*Ricty Regular.*" 'emacs-mule) . 1.4))
+  (add-to-list 'default-frame-alist '(background-color . "black"))
+  (setq default-directory "C:/Users/fukuda-yo/Dropbox/work/" ))  
