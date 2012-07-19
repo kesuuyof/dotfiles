@@ -1,5 +1,5 @@
 .DS_Store
-ac-comphist.dat
+ac-comphist*.dat
 *~
 *#
 /auto-save-list

@@ -16,12 +16,14 @@
 
 ;; shell の存在を確認
 (defun skt:shell ()
-  (or (executable-find "zsh")
-      (executable-find "bash")
-      ;; (executable-find "f_zsh") ;; Emacs + Cygwin を利用する人は Zsh の代りにこれにしてください
-      ;; (executable-find "f_bash") ;; Emacs + Cygwin を利用する人は Bash の代りにこれにしてください
-      (executable-find "cmdproxy")
-      (error "can't find 'shell' command in PATH!!")))
+  (or 
+   ;;(executable-find "zsh")
+   (executable-find "bash")
+   (when (eq system-type 'windows-nt)
+     (executable-find "f_zsh") ;; Emacs + Cygwin を利用する人は Zsh の代りにこれにしてください
+     (executable-find "f_bash")) ;; Emacs + Cygwin を利用する人は Bash の代りにこれにしてください
+   (executable-find "cmdproxy")
+   (error "can't find 'shell' command in PATH!!")))
 
 ;; Shell 名の設定
 (setq shell-file-name (skt:shell))
@@ -72,7 +74,9 @@
 (add-to-list 'term-unbind-key-list '"C-t")
 (add-to-list 'term-unbind-key-list '"C-e")
 (add-to-list 'term-unbind-key-list '"C-a")
+(add-to-list 'term-unbind-key-list '"C-Space")
 
 (custom-set-variables
  '(term-default-fg-color "#ffffff")
- '(term-default-bg-color "#000000"))
+ (when (eq system-type 'windows-nt)
+   '(term-default-bg-color "#000000")))
