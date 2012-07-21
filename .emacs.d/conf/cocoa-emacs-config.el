@@ -1,12 +1,3 @@
-;; Command-Key and Option-Key
-;;(setq ns-command-modifier (quote meta))
-;;(setq ns-alternate-modifier (quote super))
-
-;; window size
-;;(setq initial-frame-alist '((width . 70) (height . 33) (top . 29) (left . 0)))
-;; ------------------------------------------------------------------------
-;; @ initial frame maximize
-
 ;; 起動時にウィンドウ最大化
 ;; http://www.emacswiki.org/emacs/FullScreen#toc12
 (defun jbr-init ()

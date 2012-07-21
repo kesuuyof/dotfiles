@@ -9,4 +9,3 @@
   (add-to-list 'face-font-rescale-alist
                `(,(encode-coding-string ".*Ricty Regular.*" 'emacs-mule) . 1.4))
   (add-to-list 'default-frame-alist '(background-color . "black")))
-;;  (setq default-directory "C:/Users/xxxxxxx/Dropbox/" ))  
